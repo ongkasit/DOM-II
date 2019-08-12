@@ -36,7 +36,7 @@ document.addEventListener('keydown', (event) => {
 });
 
 //using currentTarget
-const makeBgBlue = function() {
+const makeBgBlue = function(event) {
     event.stopPropagation();
     event.preventDefault();
     event.currentTarget.style.backgroundColor = 'blue';
@@ -46,12 +46,32 @@ styleHome[2].addEventListener('click', (event) => {
     event.currentTarget.style.color = 'white';
 });
 
-//img change
-const imgChange = () => {
+//TextChange
+const textChange = (event) => {
+    event.currentTarget.innerHTML = 'Changed Text!';
+}
+const funBusText = document.querySelector('.logo-heading');
+
+funBusText.addEventListener('mouseover', textChange);
+funBusText.addEventListener('mouseout', (event) => {
+    event.currentTarget.innerHTML = 'Fun Bus 2.0';
+})
+
+//Delete HTML
+const deleteText = (event) => {
     event.stopPropagation();
-    event.currentTarget
+    event.currentTarget.innerHTML = "";
 }
 
-//scroll
+const letsGo = document.querySelector('.content-section');
 
-//select
+letsGo.addEventListener('click', deleteText);
+
+
+//Change IMG
+
+const funBusImg = document.getElementById("funBusPhoto");
+
+funBusImg.addEventListener('click', (event) => {
+    event.currentTarget.img = 'adventure.jpg';
+});
